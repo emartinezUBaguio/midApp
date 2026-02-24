@@ -1,0 +1,9 @@
+.card{
+  font-size: larger;
+}
+button{
+  padding-left: .5rem;
+  padding-right: .5rem;
+  font-size: 1rem;
+  width: 50%;
+}

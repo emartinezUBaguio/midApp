@@ -1,0 +1,58 @@
+<div class="container mt-4">
+    <!-- SECTION D: TWO-WAY BINDING  [( )]  — 'Banana in a Box'      -->
+  <!-- [(ngModel)] is SYNTACTIC SUGAR for:                          -->
+  <!--   [ngModel]='prop' (Property Binding: component → input)     -->
+  <!--   (ngModelChange)='prop=$event' (Event Binding: input → comp)-->
+  <!-- Requires: FormsModule imported in the component's imports[] -->
+
+    <h3>D — Two-Way Binding <code>[( )]</code></h3>
+    <p>Two-way binding allows you to synchronize data between the component and the template in both directions.
+    <p>When you use two-way binding with <code>[(ngModel)]</code>, any changes made to the input field will automatically update the corresponding property in the component, and any changes to that property in the component will automatically update the input field in the template.</p>
+
+    <div class="card bg-light mb-3">
+  <div class="card-header">Examples</div>
+  <div class="card-body">
+    <input type="text" [(ngModel)]="twoWayName" class="form-control" placeholder="Enter text here..." />
+    <p>You entered: {{ twoWayName }}</p>
+
+    <input type="color" [(ngModel)]="selectedColor" class="shadow p-3 mb-5 bg-body-tertiary rounded form-control form-control-color" title="Choose your color">
+    <p>Selected Color: <span [style.color]="selectedColor">{{ selectedColor }}</span></p>
+
+    <input type="range" min="0" max="100" [(ngModel)]="rangeValue" class="form-range">
+    <p>Range Value: {{ rangeValue }}</p>
+
+    <select [(ngModel)]="selectedOption" class="form-select">
+      <option value="" disabled>Select an option</option>
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+      <option value="option3">Option 3</option>
+    </select>
+    <p>Selected Option: {{ selectedOption }}</p>
+
+    <table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">DEPARTMENT</th>
+      <th scope="col">VIEW</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (u of user; track user[i].id){
+    <tr >
+      <th scope="row">{{ user[i].id }}</th>
+      <td>{{ user[i].name }}</td>
+      <td>{{ user[i].department }}</td>
+      <td>VIEW</td>
+</tr>}
+    </tbody>
+    </table>
+
+
+    </div>
+  </div>
+</div>
+
+
+
