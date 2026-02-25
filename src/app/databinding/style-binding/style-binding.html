@@ -1,0 +1,49 @@
+<div class="mt-4">
+    <h3>Style Binding</h3>
+    <p>Style binding in Angular allows you to set CSS styles on an HTML element dynamically based on component properties. This is useful for changing the appearance of elements in your template based on the state of your component.</p>
+    <p>To bind a style property, you can use the syntax <code>[style.styleName]="expression"</code>, where <code>styleName</code> is the name of the CSS style you want to bind to (in camelCase), and <code>expression</code> is a template expression that evaluates to the value you want to assign to that style.</p>
+    <p>You can also use the <code>[style]</code> binding to set multiple styles at once by binding to an object where the keys are style names and the values are style values.</p> 
+    <!-- ── STYLE BINDING SYNTAX VARIANTS ───────────────────────── -->
+    <div class="card text-white bg-dark mb-3">
+        <div class="card-header">Style Binding</div>
+        <div class="card-body">
+            <h4 class="card-title">Variant 1: [style.property] with string value </h4>
+            <p [style.color]="fontColor">Dynamically colored text</p>
+            <div [style.background-color]="selectedColor">Colored background</div>
+        </div>
+
+        <div class="card-body">
+            <h4 class="card-title">Variant 2: [style.property.unit] — Angular adds the unit automatically </h4>
+            <!-- Use this to avoid concatenating 'px' manually -->
+            <p [style.font-size.px]="fontSize">Dynamic font size</p>
+            <div [style.border-radius.px]="borderRadius" 
+                    [style.border-color]="borderColor" 
+                    [style.border-style]="borderStyle" 
+                    [style.border-width.px]="borderWidth">Rounded corners</div>
+            <div [style.width.px]="imageWidth">Width-controlled box</div>
+
+        </div>
+
+        <div class="card-body">
+            <h4 class="card-title">Variant 3: [style.property] with ternary expression </h4>
+            <div [style.background-color]="isActive ? '#d8f0e3' : '#fde8e8'">
+                Conditional background
+            </div>
+        </div>
+
+        <div class="card-body">
+            <h4 class="card-title">Variant 4: [style.opacity] — numeric 0-1 </h4>
+            <div [style.opacity]="isLoading ? 0.5 : 1">
+                Dimmed when loading
+            </div>
+        </div>
+
+        <div class="card-body">
+            <h4 class="card-title">Variant 5: [style] with an object — multiple properties at once </h4>
+            <div [style]="styleObject">
+                Style object binding
+            </div>
+        </div>
+
+    </div>
+</div>

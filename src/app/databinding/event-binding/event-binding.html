@@ -9,6 +9,7 @@
 <p>Syntax: <code>(event)="handler"</code></p>
 <p>In this syntax, <code>event</code> is the name of the DOM event you want to listen for (e.g., <code>click</code>, <code>input</code>, <code>submit</code>), and <code>handler</code> is the name of a method in your component that will be called when the event occurs.</p>
 <p>Event binding is used to trigger component logic in response to user interactions. For example, you can bind to the <code>click</code> event of a button to execute a method that updates the component state or performs an action.</p>
+
 <h4 class="card-title">Examples</h4>
     <pre><code>&lt;button (click)="onButtonClick()"&gt;Click Me&lt;/button&gt;</code></pre>
     <p>In this example, the <code>click</code> event of the button is bound to the <code>onButtonClick()</code> method in the component. When the button is clicked, the method will be executed.</p>
@@ -45,6 +46,11 @@
       X: {{ mousePosition.x }} | Y: {{ mousePosition.y }}
     </div>
 
+      <!-- ── Color picker — (change) event ───────────────────── -->
+  <label>Pick a color:
+    <input type="color" [value]="selectedColor" (change)="onColorChange($event)" />
+  </label>
+  <p>Selected Color: <span [style.color]="selectedColor">{{ selectedColor }}</span></p>
     <!-- (input) fires on every keystroke in an input field -->
     <input type="text"
         style='width:20em'
@@ -53,13 +59,8 @@
            (input)="onInputChange($event)" />
     <p>You typed: {{ typedInput }}</p>
 
-    <select class="form-select"   name="framework">
-        @for (framework of frameworks; track framework){
-          <option [value]="framework">{{ framework }}</option>
-        }
+    <!-- (change) fires when an input loses focus after its value has changed -->
 
-</select>
-<p>Selected framework: {{ selectedFramework }}</p>
 <select [(ngModel)]="selectedFramework" (change)="onSelectionChange(selectedFramework)" class="form-select form-select-lg mb-3" aria-label="Large select example">
   <option value="" disabled>Select a framework</option>
   @for (framework of frameworks; track framework.name) {
@@ -69,6 +70,31 @@
 
 <p>Selected Framework: {{ selectedFramework }}</p>
 
+  <!-- ── Form submit event ───────────────────────────────── -->
+  <form (submit)="onFormSubmit($event)">
+    <input type="text" [value]="inputValue" (input)="inputValue = $any($event).target.value" class="form-control" style="width: 25%;"/>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  <p>{{ formMessage }}</p>
+ 
+  <!-- ── Double-click event ─────────────────────────────── -->
+  <div (dblclick)="onDoubleClick()" class="dblclick-area">
+    Double-click me!
+  </div>
+ 
+  <!-- ── Right-click (contextmenu) event ───────────────── -->
+  <div (contextmenu)="onRightClick($event)" class="rightclick-area">
+    Right-click me!
+  </div>
+
+    <!-- ── Event log display ─────────────────────────────── -->
+  <div class="event-log">
+    <strong>Event Log (last 5):</strong>
+    @for(entry of eventLog; track entry) {
+      <p>{{ entry }}</p>
+    }
+  </div>
+</div>
 
 
   </div>

@@ -30,6 +30,15 @@
     </li>
   </ol>
 </ol>
+
+<h3>Rules and Constraints</h3>
+<ul>
+    <li>The expression must return a value (string, number, boolean, object.property)</li>
+    <li>You CAN call pure methods and use pipes</li>
+    <li>You CANNOT use assignments (=), increment (++), or new keyword</li>
+    <li>You CANNOT access global objects like window or document directly</li>
+    <li>Expressions are re-evaluated every change detection cycle</li>
+</ul>
   <!-- SECTION A: STRING INTERPOLATION  {{ }}                     -->
   <!-- Angular evaluates the expression inside {{ }} and inserts   -->
   <!-- the result as a TEXT NODE in the DOM. It cannot be used for -->
@@ -67,8 +76,8 @@
       </ul>
 <h2>D — Safe Navigation Operator (?.)</h2>
       <!-- Using safe navigation to prevent errors if user or profile is null -->
-      <p>User Name: {{ user?.name }}</p>
-      <p>User Role: {{ user?.details?.role }}</p>
+      <p>User Name: {{ user.name }}</p>
+      <p>User Role: {{ user.details?.role }}</p>
       <select class="form-select form-select-lg mb-3" aria-label="Large select example">
         <option selected>Open this select menu</option>
       @for (role of roles; track role) {

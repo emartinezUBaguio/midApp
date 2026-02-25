@@ -4,5 +4,6 @@ export interface User {
   position: string;
   department: string;
   role: string | undefined;
+}
 
-  };
+ 

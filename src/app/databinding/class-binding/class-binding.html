@@ -1,0 +1,32 @@
+<div class="mt-4">
+  <h2>Class Binding</h2>
+  <p>Class binding in Angular allows you to set CSS classes on an HTML element dynamically based on component properties. This is useful for changing the appearance of elements in your template based on the state of your component.</p>
+  
+  <div class="card text-white bg-primary mb-3">
+    <div class="card-header">Example: Toggling CSS Classes</div>
+    <div class="card-body">
+      <h5 class="card-title">Variant 1: Single class with boolean expression </h5>
+      <!-- [class.className]="boolean" — adds class when true, removes when false -->
+            <div [class.active]="isActive">I am active</div>
+            <div [class.has-error]="hasError">Error state</div>
+            <div [class.loading]="isLoading">Loading...</div>
+
+    </div>
+    <div class="card-body">
+    <h5 class="card-title">Variant 2: Multiple single-class bindings (chain them) </h5>
+        <button [class.btn-warning]="isWarning"
+        [class.btn-disabled]="isButtonDisabled"
+        [class.btn-loading]="isLoading">
+             Multi-class Button
+        </button>
+    </div>
+
+    <div class="card-body">
+    <h5 class="card-title">Variant 3: [class] bound to a string expression </h5>
+        <!-- Replaces ALL existing static classes — use carefully -->
+        <div [class]="theme + '-theme'">Theme-based container</div>
+
+    </div>
+
+
+  </div>

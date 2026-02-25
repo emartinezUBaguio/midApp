@@ -1,0 +1,82 @@
+<div class="mt-4">
+    <!-- Use [attr.xxx] for HTML attributes that have no DOM property equivalent -->
+    <h3>Attribute Binding</h3>
+    <p>Attribute binding in Angular allows you to set the value of an HTML attribute dynamically based on the component's data. This is done using the syntax <code>[attr.attributeName]="expression"</code>, where <code>attributeName</code> is the name of the HTML attribute you want to bind to, and <code>expression</code> is a template expression that evaluates to the value you want to assign to that attribute.</p>
+    <p>Attribute binding is particularly useful for setting attributes that do not have a corresponding DOM property, such as <code>colspan</code> on a table cell, or for setting ARIA attributes for accessibility. When you use attribute binding, Angular will update the attribute in the DOM whenever the value of the expression changes.</p>
+
+
+<div class="card text-dark bg-warning mb-3" >
+  <div class="card-header">Example</div>
+  <div class="card-body">
+    <h5 class="card-title">Attribute Binding</h5>
+        <p>For example, if you want to dynamically set the <code>colspan</code> attribute of a table cell based on a component property called <code>columnSpan</code>, you would use the following syntax:</p>
+        <pre><code>&lt;td [attr.colspan]="columnSpan"&gt;Cell spanning {{columnSpan}} columns&lt;/td&gt;</code></pre>
+        <p>In this example, the <code>colspan</code> attribute of the <code>&lt;td&gt;</code> element will be set to the value of the <code>columnSpan</code> property in the component. If <code>columnSpan</code> changes, Angular will automatically update the <code>colspan</code> attribute in the DOM.</p>   
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">More Examples</h5>
+       <!-- colspan has no DOM property — must use attribute binding -->
+        <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Type</th>
+      <th scope="col">Column heading</th>
+      <th scope="col">Column heading</th>
+      <th scope="col">Column heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-active">
+      <th scope="row">Active</th>
+      <td [attr.colspan]="columnSpan">Cell spanning {{columnSpan}} columns</td>
+      
+      <td>Column content</td>
+    </tr>
+    <tr>
+      <th scope="row">Default</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    </tbody>
+        </table>   
+  </div>
+
+    <div class="card-body">
+    <h5 class="card-title">ARIA attributes for accessibility — critical for screen readers</h5>
+        <!-- ARIA attributes for accessibility — critical for screen readers -->
+        <button class="btn btn-primary"
+                [attr.aria-label]="'Delete ' + itemName"
+                [attr.aria-expanded]="isMenuOpen"
+                [attr.aria-disabled]="isButtonDisabled">
+        Delete
+        </button>
+        <p>Button status: {{isButtonDisabled ? 'Disabled' : 'Enabled'}} </p>
+        <p>Menu status: {{isMenuOpen ? 'Open' : 'Closed'}} </p>
+    </div>
+    <div class="card-body">
+    <h5 class="card-title">data-* custom attributes</h5>
+       <!-- data-* custom attributes -->
+        <div [attr.data-user-id]="userId"
+            [attr.data-role]="userRole">
+        User Card
+        </div>
+    </div>
+    <div class="card-body">
+    <h5 class="card-title">Setting to null REMOVES the attribute entirely</h5>
+       <!-- Setting to null REMOVES the attribute entirely -->
+        <button class="btn btn-success" [attr.disabled]="isDisabled ? '' : null">
+        Conditionally Disabled
+        </button>
+    </div>
+    <div class="card-body">
+    <h5 class="card-title">SVG attributes — must use [attr.xxx] since they are not DOM properties</h5>
+      <!-- SVG attributes — must use [attr.xxx] since they are not DOM properties -->
+        <svg>
+        <circle [attr.cx]="circleCx" [attr.cy]="circleCy" [attr.r]="circleR" />
+        </svg>
+    </div>
+</div>
+</div>
+
