@@ -28,14 +28,60 @@ Angular runs Change Detection after every browser event (click, input, keyup), a
 
 <h3>The 7 Binding Types — One-Page Overview</h3>
 <p class="lead">Angular provides 7 distinct binding types, each with its own syntax and use case:</p>
-<ol>
-  <li><strong>String Interpolation</strong> — <code>{{ text }}</code>: Embed component data into the DOM as text.</li>
-  <li><strong>Property Binding</strong> — <code>[property]="expression"</code>: Bind component data to DOM properties (e.g., <code>[disabled]</code>, <code>[src]</code>).</li>
-  <li><strong>Event Binding</strong> — <code>(event)="handler"</code>: Listen for DOM events and call component methods.</li>
-  <li><strong>Two-Way Binding</strong> — <code>[(ngModel)]="property"</code>: Create a two-way data flow between component properties and form inputs.</li>
-  <li><strong>Attribute Binding</strong> — <code>[attr.attribute]="expression"</code>: Bind to HTML attributes that don't have corresponding DOM properties.</li>
-  <li><strong>Class Binding</strong> — <code>[class.class-name]="
-expression"</code>: Conditionally apply CSS classes based on component state.</li>
-  <li><strong>Style Binding</strong> — <code>[style.style-name]="expression"</code>: Dynamically set inline styles based on component data.</li>
-</ol>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Binding Type</th>
+        <th>Syntax</th>
+        <th>Direction</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>String Interpolation</td>
+        <td><code>{{ text }}</code></td>
+        <td>Component → DOM</td>
+        <td>Embed component data into the DOM as text.</td>
+      </tr>
+      <tr>
+        <td>Property Binding</td>
+        <td><code>[property]="expression"</code></td>
+        <td>Component → DOM</td>
+        <td>Bind component data to DOM properties (e.g., <code>[disabled]</code>, <code>[src]</code>).</td>
+      </tr>
+      <tr>
+        <td>Event Binding</td>
+        <td><code>(event)="handler"</code></td>
+        <td>DOM → Component</td>
+        <td>Listen for DOM events and call component methods.</td>
+      </tr>
+      <tr>
+        <td>Two-Way Binding</td>
+        <td><code>[(ngModel)]="property"</code></td>
+        <td>Component ↔ DOM</td>
+        <td>Create a two-way data flow between component properties and form inputs.</td>
+      </tr>
+      <tr>
+        <td>Attribute Binding</td>
+        <td><code>[attr.attribute]="expression"</code></td>
+        <td>Component → DOM</td>
+        <td>Bind to HTML attributes that don't have corresponding DOM properties.</td>
+      </tr>
+      <tr>
+        <td>Class Binding</td>
+        <td><code>[class.class-name]="expression"</code></td>
+        <td>Component → DOM</td>
+        <td>Conditionally apply CSS classes based on component state.</td>
+      </tr>
+      <tr>
+        <td>Style Binding</td>
+        <td><code>[style.style-name]="expression"</code></td>
+        <td>Component → DOM</td>
+        <td>Dynamically set inline styles based on component data.</td>
+      </tr>
+
+    </tbody>
+  </table>
+<p class="lead">In the following sections, we'll dive into each binding type with examples and best practices.</p>
 </div>

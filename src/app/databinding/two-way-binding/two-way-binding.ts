@@ -22,7 +22,7 @@ export class TwoWayBinding {
   twoWayLanguage: string = 'TypeScript';
   twoWayRating: number = 3;
   twoWayColor: string = '#3b82f6';
- 
+
 // Language options for select dropdown
 programmingLanguages: string[] = ['TypeScript', 'JavaScript', 'Python', 'Java', 'C#'];
 
@@ -37,28 +37,28 @@ programmingLanguages: string[] = ['TypeScript', 'JavaScript', 'Python', 'Java', 
     selectedDepartment: string = '';
     selectedPosition: string = '';
     selectedRole: string = '';
-    
+
     user: User[] = [
      {
       id:1,
       name: 'John Doe',
       position: 'Developer',
       department: 'IT',
-      role: 'Admin'
+      details: { role: [1, 'Admin'] }
     },
     {
       id:2,
       name: 'Jane Smith',
       position: 'Designer',
       department: 'Creative',
-      role: 'Editor'
+      details: { role: [2, 'Editor'] }
     },
     {
       id:3,
       name: 'Alice Johnson',
       position: 'Manager',
       department: 'Management',
-      role: 'Viewer'
+      details: { role: [3, 'Viewer'] }
     }];
 
 
@@ -69,7 +69,8 @@ programmingLanguages: string[] = ['TypeScript', 'JavaScript', 'Python', 'Java', 
       this.selectedName=u.name || '';
       this.selectedDepartment=u.department || '';
       this.selectedPosition=u.position || '';
-      this.selectedRole=u.role || '';
+      this.selectedRole=u.details?.role[1] || '';
+    
       console.log(`Selected User ID: ${this.selectedId}`);
     }
 
@@ -79,7 +80,7 @@ get profileSummary(): string {
   return `${this.twoWayName}, ${this.twoWayAge} years old, ${this.twoWayGender}. ` +
          `Prefers ${this.twoWayLanguage}. Rating: ${this.twoWayRating}/5. ${sub}.`;
 }
- 
+
 // Reset the entire form programmatically
 resetForm(): void {
   // Changing component properties also updates the bound input fields

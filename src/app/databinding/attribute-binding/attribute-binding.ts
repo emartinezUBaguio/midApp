@@ -24,7 +24,7 @@ user: User[] = [{
   name: 'John Doe',
   position: 'Developer',
   department: 'IT',
-  role: 'Admin'
+  details: { role: [1, 'Admin'] }
 
 },
 {
@@ -32,14 +32,14 @@ user: User[] = [{
   name: 'Jane Smith',
   position: 'Designer',
   department: 'Creative',
-  role: 'Editor'
+  details: { role: [2, 'Editor'] }
 },
 {
   id: 3,
   name: 'Alice Johnson',
   position: 'Manager',
   department: 'Management',
-  role: 'Viewer'
+  details: { role: [3, 'Viewer'] }
 }
 ];
 }

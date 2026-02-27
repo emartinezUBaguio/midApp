@@ -2,7 +2,7 @@
     <h3>Style Binding</h3>
     <p>Style binding in Angular allows you to set CSS styles on an HTML element dynamically based on component properties. This is useful for changing the appearance of elements in your template based on the state of your component.</p>
     <p>To bind a style property, you can use the syntax <code>[style.styleName]="expression"</code>, where <code>styleName</code> is the name of the CSS style you want to bind to (in camelCase), and <code>expression</code> is a template expression that evaluates to the value you want to assign to that style.</p>
-    <p>You can also use the <code>[style]</code> binding to set multiple styles at once by binding to an object where the keys are style names and the values are style values.</p> 
+    <p>You can also use the <code>[style]</code> binding to set multiple styles at once by binding to an object where the keys are style names and the values are style values.</p>
     <!-- ── STYLE BINDING SYNTAX VARIANTS ───────────────────────── -->
     <div class="card text-white bg-dark mb-3">
         <div class="card-header">Style Binding</div>
@@ -16,9 +16,11 @@
             <h4 class="card-title">Variant 2: [style.property.unit] — Angular adds the unit automatically </h4>
             <!-- Use this to avoid concatenating 'px' manually -->
             <p [style.font-size.px]="fontSize">Dynamic font size</p>
-            <div [style.border-radius.px]="borderRadius" 
-                    [style.border-color]="borderColor" 
-                    [style.border-style]="borderStyle" 
+             <button class="btn btn-info" (click)="increaseFont()">Font +</button>
+            <button class="btn btn-success" (click)="decreaseFont()">Font −</button>
+            <div [style.border-radius.px]="borderRadius"
+                    [style.border-color]="borderColor"
+                    [style.border-style]="borderStyle"
                     [style.border-width.px]="borderWidth">Rounded corners</div>
             <div [style.width.px]="imageWidth">Width-controlled box</div>
 
@@ -43,7 +45,44 @@
             <div [style]="styleObject">
                 Style object binding
             </div>
+
         </div>
+        <div class="card-body">
+            <h4 class="card-title">Variant 6: Style Binding <code>[style.]</code></h4>
+
+          <!-- .px suffix means Angular appends 'px' automatically -->
+          <p [style.color]="fontColor"
+            [style.background-color]="bgColor"
+            [style.fontSize.px]="fontSize"
+            [style.padding.px]="12"
+            [style.border-radius.px]="borderRadius">
+            Styled text — font size: {{ fontSize }}px
+          </p>
+
+
+
+        <!-- ngStyle for multiple styles at once -->
+        <div [ngStyle]="{
+              'border': '2px solid ' + fontColor,
+              'color': fontColor,
+              'background-color': bgColor,
+              'padding': '8px'
+            }">
+          ngStyle multi-property demo
+        </div>
+        </div>
+<div class="card-body">
+      <h4 class="card-title">Combined: class + style binding together</h4>
+
+      <!-- Combined: class + style binding together -->
+        <div [class.highlighted]="isHovered"
+            [style.transform]="isHovered ? 'scale(1.05)' : 'scale(1)'"
+            (mouseenter)="onMouseEnter()"
+            (mouseleave)="onMouseLeave()"
+            class="hover-box">
+          Hover over me to see combined class + style binding!
+        </div>
+</div>
 
     </div>
 </div>

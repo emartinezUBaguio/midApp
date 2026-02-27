@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">Midterm</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,27 +12,50 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="interpolation">Interpolation</a>
+          <a class="nav-link" routerLink="components">Components</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="property-binding">Property Binding</a>
+          <a class="nav-link" routerLink="/">Routing</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="event-binding">Event Binding</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="two-way">Two-Way Binding</a>
-        </li>
+
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Other</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Data Binding</a>
           <div class="dropdown-menu">
-            
+
+            <div class="dropdown-divider"></div>
+            <a class="nav-link active" routerLink="home">Introduction
+            <span class="visually-hidden">(current)</span>
+            </a>
+            <a class="dropdown-item" routerLink="interpolation">Interpolation</a>
+            <a class="dropdown-item" routerLink="property-binding">Property Binding</a>
+            <a class="dropdown-item" routerLink="event-binding">Event Binding</a>
+            <a class="dropdown-item" routerLink="two-way">Two-Way Binding</a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" routerLink="attribute">Attribute</a>
             <a class="dropdown-item" routerLink="class">Class</a>
-            <div class="dropdown-divider"></div>
             <a class="dropdown-item" routerLink="style">Style</a>
+
           </div>
         </li>
+        <!-- Routing -->
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Routing</a>
+          <div class="dropdown-menu">
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="nested">Nested</a>
+            <a class="dropdown-item" routerLink="params">Parameterized</a>
+            <a class="dropdown-item" routerLink="guards">Guards</a>
+          </div>
+        </li>
+        <!-- User Profile -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User Profile</a>
+            <div class="dropdown-menu">
+
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="list">User List</a>
+            </div>
       </ul>
 
     </div>
