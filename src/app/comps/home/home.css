@@ -1,4 +1,9 @@
-li, table{
-  font-size: larger;
+li{
+  font-size: large;
+
 }
+table{
+  width:90%;
+}
+
 

@@ -8,30 +8,46 @@ import { AttributeBinding } from './databinding/attribute-binding/attribute-bind
 import { ClassBinding } from './databinding/class-binding/class-binding';
 import { StyleBinding } from './databinding/style-binding/style-binding';
 import { Userprofile } from './user/userprofile/userprofile';
-import { Userlist } from './user/userlist/userlist';
+import { Users } from './user/users/users'
 import { Guards } from './routing/guards/guards';
-import { Nested } from './routing/nested/nested';
 import { Params } from './routing/params/params';
-import { Usertransactions } from './user/usertransactions/usertransactions';
+import { Databinding } from './databinding/databinding/databinding';
+import { Rhome } from './routing/rhome/rhome';
+import { Userdetails } from './user/userdetails/userdetails';
+import { Userposts } from './user/userposts/userposts';
 export const routes: Routes = [
-  { path: 'home', component: Home },
-  { path: 'interpolation', component: Interpolation},
-  { path: 'property-binding', component: PropertyBinding},
-  { path: 'event-binding', component: EventBinding},
-  { path: 'two-way', component: TwoWayBinding},
-  { path: 'attribute', component: AttributeBinding},
-  { path: 'class', component: ClassBinding},
-  { path: 'style', component: StyleBinding},
-  { path: 'userlist/id',
-    component: Userlist,
-      children:[
-        { path: 'records', component: Usertransactions},
-        { path: 'user', component: Userprofile},
-      ]
+
+  { path: 'data-binding', component: Databinding,
+    children:[
+      { path: 'home', component: Home},
+      { path: 'interpolation', component: Interpolation},
+      { path: 'property', component: PropertyBinding},
+      { path: 'event', component: EventBinding},
+      { path: 'two-way', component: TwoWayBinding},
+      { path: 'attr', component: AttributeBinding},
+      { path: 'class', component: ClassBinding},
+      { path: 'style', component: StyleBinding},
+    ]
   },
-  { path: 'list', component: Userlist},
-  { path: 'guards', component: Guards},
-  { path: 'nested', component: Nested},
-  { path: 'params', component: Params},
+  { path: 'rhome', component: Rhome,
+    children:[
+      { path: 'guards', component: Guards},
+      { path: 'users', component: Users,
+        children:[
+          {
+            path: ':id',
+            component: Userdetails,
+              children: [ // <-- Further nesting possible
+                { path: 'profile', component: Userprofile},
+                { path: 'posts', component: Userposts }
+              ]
+          },
+        ]
+      },
+      { path: 'params', component: Params},
+    ]
+  },
+
+
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

@@ -1,8 +1,15 @@
-<div class='container-mt3'>
-                  <p>ID:</p><input type="text" [(ngModel)]="selectedId" class="form-control" readonly />
-                  <p>Name:</p><input type="text" [(ngModel)]="selectedName" class="form-control" readonly />
-                  <p>Department:</p><input type="text" [(ngModel)]="selectedDepartment" class="form-control" readonly />
-                  <p>Position:</p><input type="text" [(ngModel)]="selectedPosition" class="form-control" readonly />
-                  <p>Role:</p><input type="text" [(ngModel)]="selectedRole" class="form-control" readonly />
+<div class='container-mt-3 '>
 
+<div class="card bg-info-subtle border-start mt-4">
+  <div class="card-header">
+    <h1>User Details: {{ userId() }}</h1>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Employee Details</h5>
+    <div class="form-floating mb-3">
+   <p>ID:</p><input type="text" [(ngModel)]="userId" class="form-control" readonly />
+                  <p>Name:</p><input type="text" [(ngModel)]="userName" class="form-control" readonly />
+                  <p>Department:</p><input type="text" [(ngModel)]="userDepartment" class="form-control" readonly />
+                  <p>Position:</p><input type="text" [(ngModel)]="userPosition" class="form-control" readonly />
+                  <p>Role:</p><input type="text" [(ngModel)]="userRole" class="form-control" readonly />
 </div>

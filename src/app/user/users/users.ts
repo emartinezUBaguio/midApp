@@ -1,17 +1,21 @@
-import { User } from './../../user';
+import { User } from '../../user';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from "@angular/router";
 
 
 @Component({
-  selector: 'app-userlist',
+  selector: 'app-users',
   imports: [FormsModule, RouterLink, RouterOutlet],
-  templateUrl: './userlist.html',
-  styleUrl: './userlist.css',
+  templateUrl: './users.html',
+  styleUrl: './users.css',
 })
-export class Userlist {
-selectedId:number=0;
+export class Users {
+uid:number=0;
+uName:string|null=null;
+uDepartment:string|null=null;
+uPosition:string|null=null;
+uRole:string|null=null;
   user: User[] = [
      {
       id:1,
@@ -35,7 +39,14 @@ selectedId:number=0;
       details: { role: [3, 'Viewer'] }
     }];
 
-    onClick(u: User){
-      this.selectedId=u.id;
+    onClick(u: User): void {
+      console.log('Button clicked!');
+      this.uid=u.id;
+      this.uName=u.name || '';
+      this.uDepartment=u.department || '';
+      this.uPosition=u.position || '';
+      this.uRole=u.details?.role[1] || '';
+
+
     }
 }

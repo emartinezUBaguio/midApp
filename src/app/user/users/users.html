@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <!-- user List -->
+  <table class="table table-hover table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">EMPLOYEE NAME</th>
+      <th scope="col">DEPARTMENT</th>
+      <th scope="col">ACTIONS</th>
+    </tr>
+  </thead>
+  <tbody>
+        @for (u of user; track u.id){
+        <tr>
+          <th scope="row" ><a (click)="onClick(u)" [routerLink]="['/userprofile',u.id]">{{ u.id }}</a></th>
+          <td>{{ u.name }}</td>
+          <td>{{ u.department }}</td>
+          <td><!-- Button trigger modal -->
+              <a type="button" class="btn btn-info"  >
+                View Details
+              </a>
+          </td>
+
+        </tr>
+        }
+  </tbody>
+  </table>
+
+
+
+<!-- user- details-->
+<h2>User Management</h2>
+<div class="sidebar">
+
+</div>
+<div class="content">
+  <!-- Child routes will render here -->
+  <router-outlet></router-outlet>
+</div>
+
+</div>
