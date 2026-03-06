@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { User } from '../../user';
+import { Employee } from '../../data/employee';
 
 @Component({
   selector: 'app-navi',

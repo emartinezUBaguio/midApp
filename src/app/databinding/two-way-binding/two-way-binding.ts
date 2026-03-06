@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { User } from '../../user';
+import { Employee } from '../../data/employee';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -22,7 +22,7 @@ export class TwoWayBinding {
   twoWayLanguage: string = 'TypeScript';
   twoWayRating: number = 3;
   twoWayColor: string = '#3b82f6';
-
+  mockemployee?: Employee[];
 // Language options for select dropdown
 programmingLanguages: string[] = ['TypeScript', 'JavaScript', 'Python', 'Java', 'C#'];
 
@@ -38,39 +38,18 @@ programmingLanguages: string[] = ['TypeScript', 'JavaScript', 'Python', 'Java', 
     selectedPosition: string = '';
     selectedRole: string = '';
 
-    user: User[] = [
-     {
-      id:1,
-      name: 'John Doe',
-      position: 'Developer',
-      department: 'IT',
-      details: { role: [1, 'Admin'] }
-    },
-    {
-      id:2,
-      name: 'Jane Smith',
-      position: 'Designer',
-      department: 'Creative',
-      details: { role: [2, 'Editor'] }
-    },
-    {
-      id:3,
-      name: 'Alice Johnson',
-      position: 'Manager',
-      department: 'Management',
-      details: { role: [3, 'Viewer'] }
-    }];
 
 
 
-    onClick(u: User): void {
+
+    onClick(e: Employee): void {
       console.log('Button clicked!');
-      this.selectedId=u.id;
-      this.selectedName=u.name || '';
-      this.selectedDepartment=u.department || '';
-      this.selectedPosition=u.position || '';
-      this.selectedRole=u.details?.role[1] || '';
-    
+      this.selectedId=(e.id);
+      this.selectedName=e.firstname || '';
+      this.selectedDepartment=e.department || '';
+      this.selectedPosition=e.position || '';
+      this.selectedRole=e.role[1] || '';
+
       console.log(`Selected User ID: ${this.selectedId}`);
     }
 

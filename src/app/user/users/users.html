@@ -1,41 +1,51 @@
-<div class="container mt-4">
-  <!-- user List -->
-  <table class="table table-hover table-striped table-dark">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">EMPLOYEE NAME</th>
-      <th scope="col">DEPARTMENT</th>
-      <th scope="col">ACTIONS</th>
-    </tr>
-  </thead>
-  <tbody>
-        @for (u of user; track u.id){
-        <tr>
-          <th scope="row" ><a (click)="onClick(u)" [routerLink]="['/userprofile',u.id]">{{ u.id }}</a></th>
-          <td>{{ u.name }}</td>
-          <td>{{ u.department }}</td>
-          <td><!-- Button trigger modal -->
-              <a type="button" class="btn btn-info"  >
-                View Details
-              </a>
-          </td>
+<div class="card">
+      <div class="card-header">
+        <h2>👥 Users</h2>
 
-        </tr>
-        }
-  </tbody>
-  </table>
+        <!-- 🔁 Two-Way Binding: searchTerm syncs with input in real time -->
+        <input
+          [(ngModel)]="searchTerm"
+          placeholder="🔍 Search by name, department, or role..."
+          class="search-input"
+        />
+      </div>
 
+      <p class="result-count">Showing {{ filteredEmployees.length }} of {{ employees.length }} employee</p>
 
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Position</th>
+            <th>Role</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of filteredEmployees">
+            <td>{{ user.id }}</td>
+            <td>{{ user.firstname }} {{ user.lastname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.department }}</td>
+            <td>{{ user.position }}</td>
+            <td>
+              <!-- Role badge with color coding -->
+              <span class="badge" [ngClass]="'badge-' + user.role">
+                {{ user.role | uppercase }}
+              </span>
+            </td>
+            <td>
+              <!-- Navigates to /users/:id (parameterized route) -->
+              <a [routerLink]="['/users', user.id]" class="btn-view">View</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-<!-- user- details-->
-<h2>User Management</h2>
-<div class="sidebar">
-
-</div>
-<div class="content">
-  <!-- Child routes will render here -->
-  <router-outlet></router-outlet>
-</div>
-
-</div>
+    <hr />
+    <!-- ⬇️ UserDetailsComponent renders here (nested route outlet) -->
+    <router-outlet></router-outlet>

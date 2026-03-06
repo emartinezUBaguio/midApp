@@ -11,7 +11,7 @@
     <h5 class="card-title">Attribute Binding</h5>
         <p>For example, if you want to dynamically set the <code>colspan</code> attribute of a table cell based on a component property called <code>columnSpan</code>, you would use the following syntax:</p>
         <pre><code>&lt;td [attr.colspan]="columnSpan"&gt;Cell spanning {{columnSpan}} columns&lt;/td&gt;</code></pre>
-        <p>In this example, the <code>colspan</code> attribute of the <code>&lt;td&gt;</code> element will be set to the value of the <code>columnSpan</code> property in the component. If <code>columnSpan</code> changes, Angular will automatically update the <code>colspan</code> attribute in the DOM.</p>   
+        <p>In this example, the <code>colspan</code> attribute of the <code>&lt;td&gt;</code> element will be set to the value of the <code>columnSpan</code> property in the component. If <code>columnSpan</code> changes, Angular will automatically update the <code>colspan</code> attribute in the DOM.</p>
   </div>
 
   <div class="card-body">
@@ -30,7 +30,7 @@
     <tr class="table-active">
       <th scope="row">Active</th>
       <td [attr.colspan]="columnSpan">Cell spanning {{columnSpan}} columns</td>
-      
+
       <td>Column content</td>
     </tr>
     <tr>
@@ -40,7 +40,7 @@
       <td>Column content</td>
     </tr>
     </tbody>
-        </table>   
+        </table>
   </div>
 
     <div class="card-body">
@@ -58,9 +58,9 @@
     <div class="card-body">
     <h5 class="card-title">data-* custom attributes</h5>
        <!-- data-* custom attributes -->
-        <div [attr.data-user-id]="userId"
-            [attr.data-role]="userRole">
-        User Card
+        <div [attr.data-user-id]="employeeId"
+            [attr.data-role]="employeeRole">
+        Employee Card
         </div>
     </div>
     <div class="card-body">

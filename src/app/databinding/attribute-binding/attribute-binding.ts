@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { User } from '../../user';
+import { Employee } from '../../data/employee';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-attribute-binding',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './attribute-binding.html',
   styleUrl: './attribute-binding.css',
 })
@@ -17,29 +18,35 @@ isDisabled: boolean = false;
 circleCx: number = 50;
 circleCy: number = 50;
 circleR: number = 40;
-userId: number = 123;
-userRole: string = 'admin';
-user: User[] = [{
+employeeId: number = 123;
+employeeRole: string = 'admin';
+employee: Employee[] = [{
   id: 1,
-  name: 'John Doe',
+  firstname: 'John',
+  lastname: 'Doe',
+  email: 'John@Doe.com',
   position: 'Developer',
   department: 'IT',
-  details: { role: [1, 'Admin'] }
+  role: 'Admin',
 
 },
 {
   id: 2,
-  name: 'Jane Smith',
+  firstname: 'Jane',
+  lastname:'Smith',
+  email: 'Jane@Smith.com',
   position: 'Designer',
   department: 'Creative',
-  details: { role: [2, 'Editor'] }
+  role: 'Editor',
 },
 {
   id: 3,
-  name: 'Alice Johnson',
+  firstname: 'Alice',
+  lastname: 'Johnson',
+  email: 'Alice@Johnson.com',
   position: 'Manager',
   department: 'Management',
-  details: { role: [3, 'Viewer'] }
+  role: 'Viewer'
 }
 ];
 }

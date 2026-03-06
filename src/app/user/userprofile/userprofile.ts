@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal, inject } from '@angular/core';
-import { User } from '../../user';
+import { Component} from '@angular/core';
+import { Employee } from '../../data/mockemployee';
+import { mockemployee} from '../../data/employee';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,44 +13,22 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './userprofile.html',
   styleUrl: './userprofile.css',
 })
-export class Userprofile {
-  userId = signal('');
-  userName:string='';
-  userDepartment:string='';
-  userRole:string='';
+export class UserProfileComponent {
+  editableEmployee?: Employee;     // A copy of the User to edit
+  saveMessage  = '';
 
-  userPosition:string='';
-  private activatedRoute = inject(ActivatedRoute);
-  user: User[] = [
-    {
-      id:1,
-      name: 'John Doe',
-      position: 'Developer',
-      department: 'IT',
-      details: { role: [1, 'Admin'] }
-    },
-    {
-      id:2,
-      name: 'Jane Smith',
-      position: 'Designer',
-      department: 'Creative',
-      details: { role: [2, 'Editor'] }
-    },
-    {
-      id:3,
-      name: 'Alice Johnson',
-      position: 'Manager',
-      department: 'Management',
-      details: { role: [3, 'Viewer'] }
-    }
-  ];
-  selectedID:number=this.user[0].id;
+  constructor(private route: ActivatedRoute) {}
 
-  constructor() {
-     this.activatedRoute.params.subscribe((params) => {
-      this.userId.set(params['id']);
-      
-    });
+  ngOnInit() {
+    const id   = this.route.parent?.snapshot.paramMap.get('id') ?? '';
+    const found = mockemployee.find(e => e.id === Number(id));
+    // Spread into a new object to avoid mutating the shared mock data directly
+    if (found) this.editableEmployee? { ...found }:{}
+  }
+
+  saveProfile() {
+    // In a real app: call UserService.update(this.editableUser)
+    this.saveMessage = `✅ Profile for ${this.editableEmployee?.firstname} saved successfully!`;
+    setTimeout(() => this.saveMessage = '', 3000);
   }
 }
-

@@ -1,0 +1,24 @@
+.profile-container { padding: 8px 0; }
+    h3                 { color: #1a237e; margin-bottom: 16px; }
+    .form-grid         { display: grid; grid-template-columns: repeat(2, 1fr);
+                         gap: 16px; margin-bottom: 20px; }
+    .form-group        { display: flex; flex-direction: column; gap: 4px; }
+    label              { font-size: 0.8rem; color: #888; text-transform: uppercase; }
+    .form-input        { padding: 8px 12px; border: 1px solid #ccc;
+                         border-radius: 6px; font-size: 0.95rem; }
+    .form-input:focus  { border-color: #3f51b5; outline: none; }
+    .preview-card      { background: #e8eaf6; padding: 16px; border-radius: 8px;
+                         margin-bottom: 16px; }
+    h4                 { margin: 0 0 10px; color: #1a237e; }
+    .preview-card p    { margin: 4px 0; color: #333; }
+    .btn-save          { background: #2e7d32; color: white; border: none;
+                         padding: 10px 24px; border-radius: 6px;
+                         cursor: pointer; font-size: 1rem; }
+    .btn-save:hover    { background: #1b5e20; }
+    .save-msg          { color: #2e7d32; font-weight: bold; margin-top: 8px; }
+    .badge             { padding: 3px 10px; border-radius: 12px;
+                         font-size: 0.78rem; font-weight: bold; }
+    .badge-admin       { background: #e8f5e9; color: #2e7d32; }
+    .badge-user        { background: #e3f2fd; color: #1565c0; }
+    .badge-guest       { background: #fff3e0; color: #e65100; }
+    .empty             { color: #aaa; font-style: italic; }

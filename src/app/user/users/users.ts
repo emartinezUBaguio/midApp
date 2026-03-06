@@ -1,52 +1,37 @@
-import { User } from '../../user';
+import { mockemployee } from '../../data/employee';
+
+
+// users/users.component.ts
+// Lists all users in a styled table.
+// Uses [(ngModel)] two-way binding for live search filtering.
+// Contains a nested <router-outlet> for UserDetails to render below the table.
+
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { RouterOutlet, RouterLink } from '@angular/router';
+import { FormsModule }              from '@angular/forms';
+import { CommonModule }             from '@angular/common';
+import { Employee }                     from '../../data/employee';
 
 
 @Component({
   selector: 'app-users',
-  imports: [FormsModule, RouterLink, RouterOutlet],
-  templateUrl: './users.html',
-  styleUrl: './users.css',
+  standalone: true,
+  imports: [RouterOutlet, RouterLink, FormsModule, CommonModule],
+  templateUrl: 'users.html',
+  styleUrl: 'users.css',
 })
-export class Users {
-uid:number=0;
-uName:string|null=null;
-uDepartment:string|null=null;
-uPosition:string|null=null;
-uRole:string|null=null;
-  user: User[] = [
-     {
-      id:1,
-      name: 'John Doe',
-      position: 'Developer',
-      department: 'IT',
-      details: { role: [1, 'Admin'] }
-    },
-    {
-      id:2,
-      name: 'Jane Smith',
-      position: 'Designer',
-      department: 'Creative',
-      details: { role: [2, 'Editor'] }
-    },
-    {
-      id:3,
-      name: 'Alice Johnson',
-      position: 'Manager',
-      department: 'Management',
-      details: { role: [3, 'Viewer'] }
-    }];
+export class UsersComponent {
+  searchTerm = '';      // 🔁 Two-way bound to search input
+  employees: Employee[] = mockemployee;
 
-    onClick(u: User): void {
-      console.log('Button clicked!');
-      this.uid=u.id;
-      this.uName=u.name || '';
-      this.uDepartment=u.department || '';
-      this.uPosition=u.position || '';
-      this.uRole=u.details?.role[1] || '';
-
-
-    }
+  // Filters users live as searchTerm changes
+  get filteredEmployees(): Employee[] {
+    const term = this.searchTerm.toLowerCase();
+    return this.employees.filter(e =>
+      e.firstname.toLowerCase().includes(term)  ||
+      e.lastname.toLowerCase().includes(term)   ||
+      e.department.toLowerCase().includes(term) ||
+      e.role.toLowerCase().includes(term)
+    );
+  }
 }

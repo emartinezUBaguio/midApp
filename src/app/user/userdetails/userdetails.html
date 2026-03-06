@@ -1,1 +1,53 @@
-<p>userdetails works!</p>
+
+    @if (employee) {
+  <div class="details-card">
+    <div class="details-header">
+        <div class="avatar">{{ employees[0].firstname }}{{ employees[0].lastname }}</div>
+        <div>
+          <h2>{{ employees[0].firstname }} {{ employees[0].lastname }}</h2>
+          <span class="badge" [ngClass]="'badge-' + employees[0].role">
+            {{ employees[0].role | uppercase }}
+          </span>
+        </div>
+      </div>
+
+      <!-- User Info Grid -->
+      <div class="info-grid">
+        <div class="info-item"><label>ID</label><span>{{ employees[0].id }}</span></div>
+        <div class="info-item"><label>Email</label><span>{{ employees[0].email }}</span></div>
+        <div class="info-item"><label>Department</label><span>{{ employees[0].department }}</span></div>
+        <div class="info-item"><label>Position</label><span>{{ employees[0].position }}</span></div>
+      </div>
+
+  </div>
+} @else {
+  <ng-template #notFound>
+    <p>User not found.</p>
+  </ng-template>
+}
+
+
+      <!-- 🔁 Two-Way Binding: inline note field -->
+      <div class="note-section">
+        <label>📝 Reviewer Note:</label>
+        <input [(ngModel)]="reviewNote" placeholder="Add a note about this user..." class="note-input"/>
+        @if (reviewNote) {
+        <p class="note-preview">Note saved: <em>"{{ reviewNote }}"</em></p>
+}
+      </div>
+
+      <!-- Child route tabs -->
+      <nav class="tab-nav">
+        <a [routerLink]="['profile']" routerLinkActive="tab-active" class="tab">👤 Profile</a>
+        <a [routerLink]="['posts']"   routerLinkActive="tab-active" class="tab">📝 Posts</a>
+      </nav>
+
+      <div class="tab-content">
+        <router-outlet></router-outlet>   <!-- Renders Posts or Profile -->
+      </div>
+
+
+    <ng-template #notFound>
+      <div class="not-found">⚠️ User with ID {{ employeeId }} not found.</div>
+    </ng-template>
+

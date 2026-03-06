@@ -1,0 +1,21 @@
+ .card         { background: white; border-radius: 8px;
+                    padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .card-header  { display: flex; justify-content: space-between;
+                    align-items: center; margin-bottom: 12px; }
+    h2            { margin: 0; color: #1a237e; }
+    .search-input { padding: 8px 12px; border: 1px solid #ccc; border-radius: 20px;
+                    width: 320px; font-size: 0.95rem; }
+    .result-count { font-size: 0.85rem; color: #888; margin-bottom: 12px; }
+    .user-table   { width: 100%; border-collapse: collapse; }
+    th            { background: #1a237e; color: white; padding: 10px 12px;
+                    text-align: left; font-size: 0.9rem; }
+    td            { padding: 10px 12px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+    tr:hover td   { background: #e8eaf6; }
+    .badge        { padding: 3px 10px; border-radius: 12px;
+                    font-size: 0.78rem; font-weight: bold; }
+    .badge-admin  { background: #e8f5e9; color: #2e7d32; }
+    .badge-user   { background: #e3f2fd; color: #1565c0; }
+    .badge-guest  { background: #fff3e0; color: #e65100; }
+    .btn-view     { background: #3f51b5; color: white; padding: 4px 12px;
+                    border-radius: 4px; text-decoration: none; font-size: 0.85rem; }
+    .btn-view:hover { background: #303f9f; }

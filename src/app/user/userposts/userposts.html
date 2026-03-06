@@ -1,1 +1,26 @@
-<p>userposts works!</p>
+ <div class="posts-container">
+      <h3>📝 Posts by User #{{ userId }}</h3>
+
+      <!-- 🔁 Two-Way Binding: new post fields -->
+      <div class="new-post-form">
+        <input  [(ngModel)]="newTitle" placeholder="Post title..."   class="post-input"/>
+        <textarea [(ngModel)]="newBody" placeholder="Post body..." class="post-textarea"></textarea>
+        <button (click)="addPost()" [disabled]="!newTitle.trim()" class="btn-add">
+          ➕ Add Post
+        </button>
+      </div>
+@for(p of posts; track p.id){
+      <div class="post-card" >
+        <div class="post-header">
+          <strong>{{ p.title }}</strong>
+          <span class="post-date">{{ p.date }}</span>
+        </div>
+        <p>{{ p.body }}</p>
+      </div>
+    }
+
+      @if(posts.length===0) {
+        <p  class="empty">No posts yet.</p>
+      }
+
+</div>

@@ -100,13 +100,13 @@
     </tr>
   </thead>
   <tbody>
-    @for (u of user; track u.id){
-    <tr [class.table-active]="selectedId === u.id">
-      <th scope="row" >{{ u.id }}</th>
-      <td>{{ u.name }}</td>
-      <td>{{ u.department }}</td>
+    @for (e of mockemployee; track e.id){
+    <tr [class.table-active]="selectedId === e.id">
+      <th scope="row" >{{ e.id }}</th>
+      <td>{{ e.firstname }}</td>
+      <td>{{ e.department }}</td>
       <td><!-- Button trigger modal -->
-        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onClick(u)">
+        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onClick(e)">
           View Details
         </button>
       </td>
