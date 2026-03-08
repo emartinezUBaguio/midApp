@@ -10,16 +10,18 @@ import { StyleBinding } from './databinding/style-binding/style-binding';
 import { UserProfileComponent } from './user/userprofile/userprofile';
 import { UsersComponent } from './user/users/users';
 import { Databinding } from './databinding/databinding/databinding';
-
 import { UserDetailsComponent } from './user/userdetails/userdetails';
-
 import { authGuard } from './guards/auth.guard';
 import { UserPosts } from './user/userposts/userposts';
+import { Intro } from './databinding/intro/intro';
 export const routes: Routes = [
 
-  { path: 'data-binding', component: Databinding,
-    children:[
-      { path: 'home', component: Home},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  // Data Binding
+  { path: 'home', component: Home,
+      children:[
+      { path: 'intro', component: Intro},
+      {path: 'db', component: Databinding},
       { path: 'interpolation', component: Interpolation},
       { path: 'property', component: PropertyBinding},
       { path: 'event', component: EventBinding},
@@ -27,20 +29,37 @@ export const routes: Routes = [
       { path: 'attr', component: AttributeBinding},
       { path: 'class', component: ClassBinding},
       { path: 'style', component: StyleBinding},
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
     ]
   },
-  { path: 'users', component: UsersComponent,// parent route: /users
+  // Employees
+  {
+    path: 'employees',
+    component: UsersComponent,
     children:[
-      { path: ':id', //parameterized: /user/1
-        component: UserDetailsComponent,
-        canActivate: [authGuard], //ptotects this and child routes
+     {
+      // level 2 employees: /employees/id/
+        path: ':id',
         children: [
-        { path: 'posts', component: UserPosts},
-        { path: 'profile', component: UserProfileComponent},
-        { path: '', redirectTo: 'home', pathMatch: 'full' },
+          { path: 'details', component: UserDetailsComponent},
+          { path: 'posts', component: UserPosts},
+          { path: 'profile', component: UserProfileComponent},
         ]
-      }
+      },
+      
     ]
   },
-  { path: '**', redirectTo: 'users' }  , // Wildcard fallback
+  { path: '**', redirectTo: 'home' }  // Wildcard fallback
+  
+  
+  // parent route: /users
+ //parameterized: /user/1
+  
+ 
+    
+      
+   
+    
+ 
+  
 ];

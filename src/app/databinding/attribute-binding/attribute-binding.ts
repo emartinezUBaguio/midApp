@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Employee } from '../../data/employee';
+import { Employee } from '../../models/employee.model';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -20,33 +20,6 @@ circleCy: number = 50;
 circleR: number = 40;
 employeeId: number = 123;
 employeeRole: string = 'admin';
-employee: Employee[] = [{
-  id: 1,
-  firstname: 'John',
-  lastname: 'Doe',
-  email: 'John@Doe.com',
-  position: 'Developer',
-  department: 'IT',
-  role: 'Admin',
+employee: Employee[] = []
 
-},
-{
-  id: 2,
-  firstname: 'Jane',
-  lastname:'Smith',
-  email: 'Jane@Smith.com',
-  position: 'Designer',
-  department: 'Creative',
-  role: 'Editor',
-},
-{
-  id: 3,
-  firstname: 'Alice',
-  lastname: 'Johnson',
-  email: 'Alice@Johnson.com',
-  position: 'Manager',
-  department: 'Management',
-  role: 'Viewer'
-}
-];
 }

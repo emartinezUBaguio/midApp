@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Employee } from '../../data/employee';
+import { Employee } from '../../models/employee.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -34,7 +34,7 @@ programmingLanguages: string[] = ['TypeScript', 'JavaScript', 'Python', 'Java', 
     selectedOption: string = 'option1';
     selectedId: number | null = null;
     selectedName: string = '';
-    selectedDepartment: string = '';
+    selectedDepartmentID: number = 0;
     selectedPosition: string = '';
     selectedRole: string = '';
 
@@ -46,7 +46,7 @@ programmingLanguages: string[] = ['TypeScript', 'JavaScript', 'Python', 'Java', 
       console.log('Button clicked!');
       this.selectedId=(e.id);
       this.selectedName=e.firstname || '';
-      this.selectedDepartment=e.department || '';
+      this.selectedDepartmentID=e.departmentId;
       this.selectedPosition=e.position || '';
       this.selectedRole=e.role[1] || '';
 

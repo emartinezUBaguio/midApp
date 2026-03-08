@@ -104,7 +104,7 @@
     <tr [class.table-active]="selectedId === e.id">
       <th scope="row" >{{ e.id }}</th>
       <td>{{ e.firstname }}</td>
-      <td>{{ e.department }}</td>
+      <td>{{ e.departmentId }}</td>
       <td><!-- Button trigger modal -->
         <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onClick(e)">
           View Details
@@ -123,7 +123,7 @@
 
                   <p>ID:</p><input type="text" [(ngModel)]="selectedId" class="form-control" readonly />
                   <p>Name:</p><input type="text" [(ngModel)]="selectedName" class="form-control" readonly />
-                  <p>Department:</p><input type="text" [(ngModel)]="selectedDepartment" class="form-control" readonly />
+                  <p>Department :</p><input type="text" [(ngModel)]="selectedDepartmentID" class="form-control" readonly />
                   <p>Position:</p><input type="text" [(ngModel)]="selectedPosition" class="form-control" readonly />
                   <p>Role:</p><input type="text" [(ngModel)]="selectedRole" class="form-control" readonly />
 

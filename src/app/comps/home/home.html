@@ -1,93 +1,13 @@
-<div class="container mt-4">
-
-<h2>Data Binding</h2>
-
-<h3>Learning Objectives</h3>
-<ol>
-  <li>Use interpolation, property binding, and event binding in Angular templates</li>
-  <li>Implement all 7 forms of data binding: String Interpolation, Property Binding, Event Binding, Two-Way Binding, Attribute Binding, Class Binding, and Style Binding</li>
-  <li>Select the appropriate binding type for a given UI scenarios</li>
-  <li>Build a working Angular 20 application that demonstrates all binding types  </li>
-</ol>
-<h3>The Problem Data Binding Solves</h3>
-<p class="lead">Before data binding, developers manually synchronized the DOM with application state: every time a variable changed, you had to find the right DOM element and update it with .innerHTML, .value, or setAttribute(). Angular's data binding system automates this synchronization. </p>
-
-
-<h3>The Angular Template-Component Bridge</h3>
-<h4>Every Angular component has two sides:</h4>
-<ol>
-  <li>Component Class (.ts) — the "Model": JavaScript/TypeScript logic and data (properties, methods)</li>
-  <li>Template (.html) — the "View": HTML that Angular compiles into a live DOM</li>
-</ol>
-<p class="lead">Data binding is the syntax that lets these two sides communicate. Angular parses the template and sets up live connections — called bindings — between DOM nodes and component properties.</p>
-
-<h3>Change Detection Overview</h3>
-<p class="lead">Angular's change detection system is the engine that powers data binding. It tracks changes to component properties and updates the DOM efficiently. When a property changes, Angular re-evaluates the bindings that depend on it and updates only the affected parts of the DOM.</p>
-<p class="lead">
-Angular runs Change Detection after every browser event (click, input, keyup), after HTTP responses, and after timers. It checks if any bound property changed; if it did, it updates only the affected DOM nodes. This is far more efficient than re-rendering the whole page.</p>
-
-
-<div class="card border-secondary mb-3" >
-  <div class="card-header">The 7 Binding Types — One-Page Overview</div>
-  <div class="card-body">
-    <h4 class="card-title">Angular provides 7 distinct binding types, each with its own syntax and use case:</h4>
-    <table class="table table-bordered table-striped table-sm">
-    <thead>
-      <tr>
-        <th>Binding Type</th>
-        <th>Syntax</th>
-        <th>Direction</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>String Interpolation</td>
-        <td><code>{{ text }}</code></td>
-        <td>Component → DOM</td>
-        <td>Embed component data into the DOM as text.</td>
-      </tr>
-      <tr>
-        <td>Property Binding</td>
-        <td><code>[property]="expression"</code></td>
-        <td>Component → DOM</td>
-        <td>Bind component data to DOM properties (e.g., <code>[disabled]</code>, <code>[src]</code>).</td>
-      </tr>
-      <tr>
-        <td>Event Binding</td>
-        <td><code>(event)="handler"</code></td>
-        <td>DOM → Component</td>
-        <td>Listen for DOM events and call component methods.</td>
-      </tr>
-      <tr>
-        <td>Two-Way Binding</td>
-        <td><code>[(ngModel)]="property"</code></td>
-        <td>Component ↔ DOM</td>
-        <td>Create a two-way data flow between component properties and form inputs.</td>
-      </tr>
-      <tr>
-        <td>Attribute Binding</td>
-        <td><code>[attr.attribute]="expression"</code></td>
-        <td>Component → DOM</td>
-        <td>Bind to HTML attributes that don't have corresponding DOM properties.</td>
-      </tr>
-      <tr>
-        <td>Class Binding</td>
-        <td><code>[class.class-name]="expression"</code></td>
-        <td>Component → DOM</td>
-        <td>Conditionally apply CSS classes based on component state.</td>
-      </tr>
-      <tr>
-        <td>Style Binding</td>
-        <td><code>[style.style-name]="expression"</code></td>
-        <td>Component → DOM</td>
-        <td>Dynamically set inline styles based on component data.</td>
-      </tr>
-
-    </tbody>
-  </table>
+<app-databinding></app-databinding>
+ <div class="row" data-bs-theme="dark">
+        <div class="col">
+          <h2>Angular Data Binding</h2>
+            <div class="jumbotron">
+              <router-outlet></router-outlet>
+            </div>
+        </div>
+    
   </div>
-</div>
 
-<p class="lead">In the following sections, we'll dive into each binding type with examples and best practices.</p>
-</div>
+
+

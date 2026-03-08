@@ -1,62 +1,61 @@
-<p class='container-mt-3 '>
-  @if (editableEmployee){
-    <div class="profile-container">
-      <h3>👤 Edit Profile — {{ editableEmployee.firstname }} {{ editableEmployee.lastname }}</h3>
-
-      <div class="form-grid">
-        <div class="form-group">
-          <label>First Name</label>
-          <!-- 🔁 Two-Way Binding on each User interface field -->
-          <input [(ngModel)]="editableEmployee.firstname" class="form-input" />
-        </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input [(ngModel)]="editableEmployee.lastname" class="form-input" />
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input [(ngModel)]="editableEmployee.email" type="email" class="form-input" />
-        </div>
-        <div class="form-group">
-          <label>Department</label>
-          <input [(ngModel)]="editableEmployee.department" class="form-input" />
-        </div>
-        <div class="form-group">
-          <label>Position</label>
-          <input [(ngModel)]="editableEmployee.position" class="form-input" />
-        </div>
-        <div class="form-group">
-          <label>Role</label>
-          <!-- Dropdown bound to role — only allows the three valid union type values -->
-          <select [(ngModel)]="editableEmployee.role" class="form-input">
-            <option value="admin">Admin</option>
-            <option value="user">User</option>
-            <option value="guest">Guest</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Live Preview reflects changes in real time via two-way binding -->
-      <div class="preview-card">
-        <h4>🔍 Live Preview</h4>
-        <p><strong>{{ editableEmployee.firstname }} {{ editableEmployee.lastname }}</strong></p>
-        <p>{{ editableEmployee.position }} — {{ editableEmployee.department }}</p>
-        <p>{{ editableEmployee.email }}</p>
-        <span class="badge" [ngClass]="'badge-' + editableEmployee.role">
-          {{ editableEmployee.role | uppercase }}
-        </span>
-      </div>
-
-      <button (click)="saveProfile()" class="btn-save">💾 Save Profile</button>
-      @if(saveMessage){
-        <p class="save-msg">{{ saveMessage }}</p>
-      }
-
+<div class='card shadow-sm'>
+    <div class='card-header bg-danger text-white fw-bold'>
+      <i class='bi bi-pencil-square me-2'></i>Edit Profile
     </div>
+    
+    <div class='card-body'>
+      @if (employee){
+      <!-- TWO-WAY BINDING with [(ngModel)] -->
+      <div class='mb-3'>
+        <label class='form-label fw-semibold'>Full Name</label>
+        <input [(ngModel)]='employee.firstname' name='name'
+               class='form-control' placeholder='Full name'>
+      </div>
 
-}@else{
-    <ng-template #noUser>
-      <p class="empty">User not found.</p>
-    </ng-template>
-    <p>Role:</p>
+      <div class='mb-3'>
+        <label class='form-label fw-semibold'>Email</label>
+        <input [(ngModel)]='employee.email' name='email' type='email'
+               class='form-control' placeholder='Email address'>
+      </div>
+
+      <div class='mb-3'>
+        <label class='form-label fw-semibold'>Location</label>
+        <input [(ngModel)]='employee.departmentId' name='location'
+               class='form-control' placeholder='City, Country'>
+      </div>
+
+      <div class='mb-3'>
+        <label class='form-label fw-semibold'>Bio</label>
+        <textarea [(ngModel)]='employee.position' name='bio' rows='3'
+                  class='form-control' placeholder='Short biography'></textarea>
+      </div>
+
+      <div class='mb-3'>
+        <label class='form-label fw-semibold'>Role</label>
+        <select [(ngModel)]='employee.role' name='role' class='form-select'>
+          <option value='Admin'>Admin</option>
+          <option value='Editor'>Editor</option>
+          <option value='Viewer'>Viewer</option>
+        </select>
+      </div>
+
+      <!-- Live preview of two-way binding -->
+      <div class='alert alert-info mt-3'>
+        <strong>Live Preview:</strong>
+        {{ employee.firstname }} — {{ employee.role }} from {{ employee.departmentId }}
+      </div>
+
+      <button class='btn btn-danger' (click)='save()'>
+        <i class='bi bi-save me-1'></i>Save Changes
+      </button>
+
+      @if(saved){
+      <span class='ms-3 text-success fw-semibold'>
+        <i class='bi bi-check-circle me-1'></i>Saved!
+      </span>}
+      <button class='btn btn-danger' (click)='goBack()'>
+        <i class='bi bi-save me-1'></i>Back
+        </button>
   }
+  </div>
+

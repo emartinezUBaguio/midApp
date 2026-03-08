@@ -1,26 +1,22 @@
- <div class="posts-container">
-      <h3>📝 Posts by User #{{ userId }}</h3>
-
-      <!-- 🔁 Two-Way Binding: new post fields -->
-      <div class="new-post-form">
-        <input  [(ngModel)]="newTitle" placeholder="Post title..."   class="post-input"/>
-        <textarea [(ngModel)]="newBody" placeholder="Post body..." class="post-textarea"></textarea>
-        <button (click)="addPost()" [disabled]="!newTitle.trim()" class="btn-add">
-          ➕ Add Post
-        </button>
-      </div>
-@for(p of posts; track p.id){
-      <div class="post-card" >
-        <div class="post-header">
-          <strong>{{ p.title }}</strong>
-          <span class="post-date">{{ p.date }}</span>
+  @if(posts.length >0 ){
+  <div>
+    @for(post of posts; track post.id){
+    <div class='card shadow-sm mb-3'>
+      <div class='card-body'>
+        <div class='d-flex justify-content-between align-items-start'>
+          <h5 class='card-title mb-1'>{{ post.title }}</h5>
+          <span class='badge bg-secondary'>Post #{{post.id + 1 }}</span>
         </div>
-        <p>{{ p.body }}</p>
+        <small class='text-muted'>
+          <i class='bi bi-calendar3 me-1'></i>{{ post.date }}</small>
+        <p class='card-text mt-2'>{{ post.body }}</p>
       </div>
-    }
+    </div>}
+  </div>}
+  
+  <ng-template #noPosts>
+    <div class='alert alert-secondary'>
+      <i class='bi bi-inbox me-2'></i>This user has no posts yet.
+    </div>
+  </ng-template>
 
-      @if(posts.length===0) {
-        <p  class="empty">No posts yet.</p>
-      }
-
-</div>

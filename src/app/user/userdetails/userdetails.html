@@ -1,45 +1,59 @@
 
-    @if (employee) {
+<div class="container mt-4">
+
+ 
+ 
+ @if (employee) {
   <div class="details-card">
     <div class="details-header">
-        <div class="avatar">{{ employees[0].firstname }}{{ employees[0].lastname }}</div>
+        <div class="avatar">{{ employee.firstname }}{{ employee.lastname }}</div>
         <div>
-          <h2>{{ employees[0].firstname }} {{ employees[0].lastname }}</h2>
-          <span class="badge" [ngClass]="'badge-' + employees[0].role">
-            {{ employees[0].role | uppercase }}
+          <h2>{{ employee.firstname }} {{ employee.lastname }}</h2>
+          <span class="badge" [ngClass]="'badge-' + employee.role">
+            {{ employee.role | uppercase }}
           </span>
         </div>
       </div>
 
       <!-- User Info Grid -->
       <div class="info-grid">
-        <div class="info-item"><label>ID</label><span>{{ employees[0].id }}</span></div>
-        <div class="info-item"><label>Email</label><span>{{ employees[0].email }}</span></div>
-        <div class="info-item"><label>Department</label><span>{{ employees[0].department }}</span></div>
-        <div class="info-item"><label>Position</label><span>{{ employees[0].position }}</span></div>
+        <div class="info-item"><label>ID</label><span>{{ employee.id }}</span></div>
+        <div class="info-item"><label>Email</label><span>{{ employee.email }}</span></div>
+        <div class="info-item"><label>Department</label><span>{{ employee.departmentId }}</span></div>
+        <div class="info-item"><label>Position</label><span>{{ employee.position }}</span></div>
       </div>
 
   </div>
-} @else {
-  <ng-template #notFound>
-    <p>User not found.</p>
-  </ng-template>
-}
+
 
 
       <!-- 🔁 Two-Way Binding: inline note field -->
       <div class="note-section">
         <label>📝 Reviewer Note:</label>
         <input [(ngModel)]="reviewNote" placeholder="Add a note about this user..." class="note-input"/>
-        @if (reviewNote) {
+      
         <p class="note-preview">Note saved: <em>"{{ reviewNote }}"</em></p>
-}
+
       </div>
 
       <!-- Child route tabs -->
+       <!-- Footer Actions -->
+    <div class="card-footer d-flex gap-2">
+      <button class="btn btn-secondary" (click)="goBack()">
+        <i class="bi bi-arrow-left me-1"></i>Back to List
+      </button>
+      <a [routerLink]="['employees', employee.id, 'edit']"
+         class="btn btn-warning">
+        <i class="bi bi-pencil me-1"></i>Edit User
+      </a>
+    </div>
+
+
+
+
       <nav class="tab-nav">
-        <a [routerLink]="['profile']" routerLinkActive="tab-active" class="tab">👤 Profile</a>
-        <a [routerLink]="['posts']"   routerLinkActive="tab-active" class="tab">📝 Posts</a>
+        <a [routerLink]="['/employees', employee.id,'profile']" routerLinkActive="tab-active" class="tab">👤 Profile</a>
+        <a [routerLink]="['/employees', employee.id,'posts']"   routerLinkActive="tab-active" class="tab">📝 Posts</a>
       </nav>
 
       <div class="tab-content">
@@ -51,3 +65,14 @@
       <div class="not-found">⚠️ User with ID {{ employeeId }} not found.</div>
     </ng-template>
 
+  }
+  @if (errorMessage) {
+  <div class="alert alert-danger">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{ errorMessage }}
+    <a routerLink="/users" class="btn btn-sm btn-outline-danger ms-3">
+      ← Back to List
+    </a>
+  </div>
+}
+ 
+</div>

@@ -1,16 +1,25 @@
+<!-- Auth warning -->
+ @if(returnUrl){
+<div class="alert alert-dismissible alert-warning">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4 class="alert-heading">Ooops!</h4>
+  <p class="mb-0">Please log in to view user details.</p> 
+  <button class='btn btn-sm btn-warning ms-3' (click)='login()'>Login</button>
+</div>
+ }
 <div class="card">
       <div class="card-header">
-        <h2>👥 Users</h2>
+        <h2>👥 Employees</h2>
 
         <!-- 🔁 Two-Way Binding: searchTerm syncs with input in real time -->
         <input
-          [(ngModel)]="searchTerm"
-          placeholder="🔍 Search by name, department, or role..."
+          [(ngModel)]="employees"
+          [placeholder]="employees"
           class="search-input"
         />
       </div>
 
-      <p class="result-count">Showing {{ filteredEmployees.length }} of {{ employees.length }} employee</p>
+      <p class="result-count">Showing {{ employees.length }} of {{ employees.length }} employee</p>
 
       <table class="user-table">
         <thead>
@@ -18,34 +27,38 @@
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Department</th>
+            <th>Department ID</th>
             <th>Position</th>
             <th>Role</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of filteredEmployees">
-            <td>{{ user.id }}</td>
-            <td>{{ user.firstname }} {{ user.lastname }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.department }}</td>
-            <td>{{ user.position }}</td>
+          @for (e of employees; track e.id) {
+          <tr>
+            <td>{{ e.id }}</td>
+            <td>{{ e.firstname }} {{ e.lastname }}</td>
+            <td>{{ e.email }}</td>
+            <td>{{ e.departmentId }}</td>
+            <td>{{ e.position }}</td>
             <td>
               <!-- Role badge with color coding -->
-              <span class="badge" [ngClass]="'badge-' + user.role">
-                {{ user.role | uppercase }}
+              <span class="badge" [ngClass]="'badge-' + e.role">
+                {{ e.role | uppercase }}
               </span>
             </td>
             <td>
               <!-- Navigates to /users/:id (parameterized route) -->
-              <a [routerLink]="['/users', user.id]" class="btn-view">View</a>
+              <a [routerLink]="['/employees', e.id,'details']" class="btn-view" (onclick)="getEmployee(e)">View Details</a>
             </td>
           </tr>
+        }
         </tbody>
       </table>
     </div>
 
     <hr />
     <!-- ⬇️ UserDetailsComponent renders here (nested route outlet) -->
+     <div clss="container mt-4">
     <router-outlet></router-outlet>
+    </div>

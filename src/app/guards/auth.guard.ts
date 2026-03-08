@@ -5,17 +5,33 @@
 
 import { inject }               from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import { EmployeeService } from '../services/employee-service';
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const authGuard: CanActivateFn = ( route,  state) => {
+  const employeeService = inject(EmployeeService)
   const router = inject(Router);
+  const isLoggedIn = false;
 
   // 🔐 Check simulated login state
-  const isAuthenticated = localStorage.getItem('isLoggedIn') === 'true';
+  //const isAuthenticated = localStorage.getItem('isLoggedIn') === 'true';
 
-  if (isAuthenticated) {
+  if (employeeService.isAuthenticated()) {
     return true;                    // ✅ Access granted
   }
 
-  router.navigate(['/users']);      // 🚫 Redirect if not authenticated
-  return false;
+  return isLoggedIn
+    ? true
+    : router.createUrlTree(['home'], {
+        queryParams: { returnUrl: state.url }
+      });
 };
+  // Block navigation and redirect to /users with a query param
+  // so the login prompt can explain why the user was redirected
+  //return router.createUrlTree(['/users']), {
+   //queryParams: {returnUrl: state.url }
+  //}
+  //return router.createUrlTree(['/users'], {
+ //   queryParams: { returnUrl: state.url }
+  //});
+//};
+

@@ -1,35 +1,61 @@
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">Midterm</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="home">Home
-            <span class="visually-hidden">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="components">Components</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="data-binding">Data Binding</a>
-        </li>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" routerLink="home"><img [src]="me">APPDEV1</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-
-        <!-- User Profile -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Users (Routing)</a>
-            <div class="dropdown-menu">
-
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" routerLink="/users">Users</a>
-            </div>
-      </ul>
-
-    </div>
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink='home'>Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="db" routerLinkActive="active">Data Binding</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" routerLink="employees" routerLinkActive="active">Routing</a> 
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      
+    </ul>
+    
   </div>
 </nav>
+
+
+
+<!-- <nav class='navbar navbar-expand-lg navbar-dark bg-danger'>
+    <div class='container'>
+      <a class='navbar-brand fw-bold' routerLink='/users'>
+        <i class='bi bi-people-fill me-2'></i>Angular 22 Routing
+      </a>
+      <div class='navbar-nav ms-auto d-flex flex-row gap-3 align-items-center'>
+        <a class='nav-link text-white' routerLink='/users'
+           routerLinkActive='fw-bold text-warning'>
+          <i class='bi bi-grid me-1'></i>Users
+        </a>
+        <a class='nav-link text-white' routerLink='/details'
+           routerLinkActive='fw-bold text-warning'>
+          <i class='bi bi-grid me-1'></i>Details
+        </a>
+        <button class='btn btn-sm'
+          [class.btn-outline-light]='!isAuth'
+          [class.btn-warning]='isAuth'
+          (click)='toggleAuth()'>
+          {{ isAuth ? 'Logout' : 'Login' }}
+        </button>
+      </div>
+    </div>
+  </nav> -->
+

@@ -1,14 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule }        from '@angular/forms';
 import { CommonModule }       from '@angular/common';
 import { ActivatedRoute }     from '@angular/router';
+import { EmployeeService } from '../../services/employee-service';
+import { Post } from '../../models/employee.model';
 
-export interface Post {
-  id: number;
-  title: string;
-  body: string;
-  date: string;
-}
+
 @Component({
   selector: 'app-userposts',
   imports: [FormsModule, CommonModule],
@@ -16,38 +13,21 @@ export interface Post {
   styleUrl: './userposts.css',
 })
 
-export class UserPosts {
+export class UserPosts implements OnInit {
+  posts: Post[]=[];
 
-
-
-userId   = '';
-  newTitle = '';   // 🔁 Two-way bound
-  newBody  = '';   // 🔁 Two-way bound
-
-   posts: Post[] = [
-    { id: 1, title: 'Welcome Post',   body: 'Glad to be part of the team!',   date: '2025-01-10' },
-    { id: 2, title: 'Project Update', body: 'Sprint 3 completed successfully.', date: '2025-02-14' }
-  ];
-
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private employeeService: EmployeeService
+  ){}
 
   ngOnInit() {
     // Read parent's :id param using 'parent' reference
-    this.userId = this.route.parent?.snapshot.paramMap.get('id') ?? '';
+        // Child routes inherit parent params — we access :id from the parent snapshot
+    const id   = +this.route.parent!.snapshot.paramMap.get('id') !;
+    this.posts = this.employeeService.getEmployeeById(id)?.posts ?? [];
   }
 
-  addPost() {
-    if (this.newTitle.trim()) {
-      this.posts.unshift({
-        id: this.posts.length + 1,
-        title: this.newTitle,
-        body: this.newBody || '(no content)',
-        date: new Date().toISOString().split('T')[0]
-      });
-      this.newTitle = '';  // 🔁 Clears input via two-way binding
-      this.newBody  = '';
-    }
-  }
-
+  
 }
 
